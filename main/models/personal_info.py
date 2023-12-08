@@ -8,3 +8,4 @@ class PersonalInfo(models.Model):
     residence = models.CharField(max_length=255, blank=False, null=False)
     email = models.CharField(max_length=255, blank=False, null=False)
     birthdate = models.DateField()
+    created_at = models.DateTimeField(auto_now=True)

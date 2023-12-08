@@ -26,19 +26,17 @@ admin.site.site_header = "resume_backend admin site"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('health_check', views.healthcheck, name='healthcheck'),
-    path('api-token-auth/', TokenObtainPairView.as_view(), name='api-token-obtain-pair'),
-    path('api-token-refresh/', TokenRefreshView.as_view(), name='api-token-refresh'),
+    path('', include('main.urls'))
 ]
 
 configuration_name = settings.CONFIGURATION.split(".")[-1]
 
 if configuration_name == "Development":
-    urlpatterns.extend([path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    urlpatterns.extend([path('schema/', SpectacularAPIView.as_view(), name='schema'),
                         # Optional UI:
-                        path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'),
+                        path('schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'),
                              name='swagger-ui'),
-                        path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc')])
+                        ])
 
     if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
