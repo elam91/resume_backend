@@ -5,6 +5,9 @@ from main.choices import ExperienceTypes
 
 
 class Experience(models.Model):
+    class Meta:
+        ordering = ['order']
+
     organization_name = models.CharField(max_length=255, blank=False, null=False)
     title_name = models.CharField(max_length=255, blank=False, null=False)
     start_date = models.DateField(blank=False, null=False)

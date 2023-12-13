@@ -38,7 +38,8 @@ class Base(Configuration):
         'rest_framework',
         'django_extensions',
         'import_export',
-        'drf_spectacular'
+        'drf_spectacular',
+        'tinymce'
     ]
     DJANGO_APPS = [
         'django.contrib.admin',
@@ -139,6 +140,17 @@ class Base(Configuration):
                                    'djangorestframework_camel_case.parser.CamelCaseMultiPartParser',
                                    'djangorestframework_camel_case.parser.CamelCaseJSONParser',),
         'PAGE_SIZE': 30
+    }
+
+    SPECTACULAR_SETTINGS = {
+        'COMPONENT_SPLIT_REQUEST': True,
+        'CAMELIZE_NAMES': True,
+        'POSTPROCESSING_HOOKS': [
+            'drf_spectacular.hooks.postprocess_schema_enums',
+            'drf_spectacular.contrib.djangorestframework_camel_case.camelize_serializer_fields',
+
+        ],
+
     }
 
     SIMPLE_JWT = {
