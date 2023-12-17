@@ -39,7 +39,8 @@ class Base(Configuration):
         'django_extensions',
         'import_export',
         'drf_spectacular',
-        'tinymce'
+        'tinymce',
+
     ]
     DJANGO_APPS = [
         'django.contrib.admin',
@@ -228,6 +229,9 @@ class Production(Base):
     CORS_ALLOW_ALL_ORIGINS = False
     AWS_STORAGE_BUCKET_NAME = values.Value(environ_name="S3_STORAGE")
     # If heroku Add buckateer for s3 intergration
+    BASE_DIR = Path(__file__).resolve().parent.parent
+
+
 
     MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',

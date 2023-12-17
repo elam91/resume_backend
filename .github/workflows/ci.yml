@@ -44,10 +44,23 @@ jobs:
           DJANGO_SETTINGS_MODULE: "resume_backend.settings"
           DJANGO_CONFIGURATION: Testing
           DATABASE_URL: "postgresql://django_user:django_pass@postgres/django_db"#  deploy:
-#    if: contains(fromJson('["refs/heads/prod"]'), github.ref)
-#    needs: [ test-job ]
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: echo
-#        uses: echo "implement deploy"
+  deploy:
+    if: contains(fromJson('["refs/heads/prod"]'), github.ref)
+    needs: [ test-job ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Install Poetry
+        run: |
+          curl -fsS -o get-poetry.py https://install.python-poetry.org
+          python get-poetry.py -y
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+      - name: export to requirements.txt
+        run: poetry export -f requirements.txt --output requirements.txt # if you have source code sources, you'll need to add --without-hashes flag also
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Deploying to fly.io
+        run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 

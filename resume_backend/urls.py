@@ -19,6 +19,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+
+from main.views.export_view import pdf_view
 from resume_backend import views
 
 admin.site.site_header = "resume_backend admin site"
@@ -26,6 +28,7 @@ admin.site.site_header = "resume_backend admin site"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('health_check', views.healthcheck, name='healthcheck'),
+    path('export/', pdf_view, name="export"),
     path('', include('main.urls'))
 ]
 

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Elam Buteil's Resume</title>
+        <style type="text/css">
+            body {
+                font-weight: 200;
+                font-size: 14px;
+                margin-bottom: 3px;
+            }
+            .header {
+                font-size: 26px;
+                font-weight: 100;
+                text-align: center;
+                 padding: 10px 20px 0 20px;
+                background-color:   #b4a7d6;
+            }
+            .title {
+                font-size: 32px;
+                font-weight: 100;
+                margin: 0;
+                /* text-align: right;*/
+
+            }
+            .secondary-header {
+                background-color: #b4a7d6 ;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 5px;
+                font-size: 22px;
+
+            }
+            .subtitle {
+                margin: 0;
+                padding: 0;
+                font-size: 14px;
+                text-align: center;
+                font-weight: 50;
+            }
+            .small-text {
+                padding-top: 4px;
+                margin: 1px 0 0 0;
+            }
+
+            .flex-row {
+                display: flex;
+                flex-direction: row;
+                gap: 2px;
+                flex-wrap: nowrap;
+                width: 100%;
+                justify-content: end;
+                align-items: center;
+
+            }
+
+            .flex-row * {
+                display: flex;
+
+            }
+            .org-name {
+             color: #475569;
+                font-style: italic;
+                margin-bottom: 4px;
+            }
+
+            .for-item {
+                margin-bottom: 10px;
+            }
+            .title-name {
+                margin-bottom: 0;
+                padding-bottom: 2px;
+                font-size: 18px;
+            }
+
+            .skills {
+              margin: 0;
+                padding: 0;
+
+            }
+            .skill {
+                font-size: 14px;
+                font-weight: 100;
+            }
+        </style>
+    </head>
+    <body>
+        <div class=''>
+            <div class='header'>
+                <p class='title'>Elam Buteil</p>
+                <p class="subtitle">{{ personal_info.phone_number }}</p>
+                <p class="subtitle">{{ personal_info.email }}</p>
+            </div>
+        <p class="small-text">Date of birth: {{ personal_info.birthdate }}</p>
+        <p class="small-text">Current residence: {{ personal_info.residence }}</p>
+           <p class="small-text">Updated: {{ date|date:"F d, Y" }}</p>
+
+        <div>
+        <div class='experience'>
+        <h1 class="secondary-header"> Experience</h1>
+            {% for job in work_experience %}
+                <div class="for-item">
+                <div class="flex-row">
+                    <h1 class="title-name">{{ job.title_name }}</h1>
+                    <p>·</p>
+                    <p class="flex-item org-name">{{ job.organization_name }}</p></div>
+             <p>{{ job.start_date|date:"M Y" }} -  {% if job.end_date %} {{ job.end_date|date:"M Y" }}  {% else %} Present {% endif %} </p>
+                {% if job.description %}
+                {{ job.description |safe }}
+                {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+        <div class='education'>
+             <h1 class="secondary-header">Education</h1>
+{% for education_entry in education %}
+     <div class="for-item">
+                <div class="flex-row">
+                    <h1 class="title-name">{{ education_entry.title_name }}</h1>
+                    <p>·</p>
+                    <p class="flex-item org-name">{{ education_entry.organization_name }}</p></div>
+             <p>{{ education_entry.start_date|date:"Y" }} -  {% if education_entry.end_date %} {{ education_entry.end_date|date:"Y" }}  {% else %} Present {% endif %} </p>
+                {% if education_entry.description %}
+                {{ education_entry.description |safe }}
+                {% endif %}
+            {% endfor %}
+        </div>
+            <div class='skills'>
+             <h1 class="secondary-header">Skills</h1>
+            <h5 class="skill">
+                {% for skill in skills %}
+                    {{ skill.name }}{% if forloop.last %}.{% else %},{% endif %}
+                {% endfor %}
+            </h5>
+            </div>
+
+    </body>
+</html>
