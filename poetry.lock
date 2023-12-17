@@ -545,17 +545,6 @@ s3 = ["boto3 (>=1.4.4)"]
 sftp = ["paramiko (>=1.15)"]
 
 [[package]]
-name = "django-tailwindcss"
-version = "0.4.0"
-description = "Develop with Tailwind CSS in Django flavour."
-optional = false
-python-versions = "*"
-files = [
-    {file = "django-tailwindcss-0.4.0.tar.gz", hash = "sha256:7f3f4e44214a6a35a37e8348118b35b621081c4cd7eb7c3bce305a1818517c6e"},
-    {file = "django_tailwindcss-0.4.0-py3-none-any.whl", hash = "sha256:b9738102c0f149bcc53718f7e11456449b66a4c323395c8619b708d3bab71ea1"},
-]
-
-[[package]]
 name = "django-tinymce"
 version = "3.6.1"
 description = "A Django application that contains a widget to render a form field as a TinyMCE editor."
@@ -1840,4 +1829,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">3.10,<3.12"
-content-hash = "1d6d619c8b9c3d4d42220e487bf64f9847f2a34708e56701913d865e780747b5"
+content-hash = "2181ac1ca6e81f992dc0b389d3bc4802c6e2a8f2af34a2d3e9443fbfa584100e"
