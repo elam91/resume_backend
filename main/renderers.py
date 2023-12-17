@@ -11,8 +11,7 @@ def render_to_pdf(template_src, context_dict={}):
     html = template.render(context_dict)
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = f'attachment; filename="Elam Buteil - Full-stack Developer - {timezone.now().date().strftime("%B %d, %Y")}.pdf"'
-    # result = BytesIO()
-    # pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+
     pisa_status = pisa.CreatePDF(
         html, dest=response
 
