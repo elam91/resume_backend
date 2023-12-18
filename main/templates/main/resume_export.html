@@ -1,153 +1,208 @@
+{% load static %}
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>Elam Buteil's Resume</title>
+<head>
+    <title>Elam Buteil's Resume</title>
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+    <style>
+        @font-face {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 200 ;
+            src: url('static/main/fonts/OpenSans-Light.ttf');
+            font-style: normal;
+        }
+           @font-face {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 200 ;
+            src: url('static/main/fonts/OpenSans-LightItalic.ttf');
+            font-style: italic;
+        }
+            @font-face {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400 ;
+            src: url('static/main/fonts/OpenSans-Regular.ttf');
+            font-style: normal;
+        }
+          @font-face {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400 ;
+            src: url('static/main/fonts/OpenSans-Italic.ttf');
+            font-style: italic;
+        }
+            @font-face {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 500 ;
+            src: url('static/main/fonts/OpenSans-Medium.ttf');
+            font-style: normal;
+        }
 
             @font-face {
-                    font-family: 'Open Sans', sans-serif;
-            font-weight: 100 900;
-            }
-            body {
-                    font-family: 'Open Sans', sans-serif;
-                font-weight: 400;
-                font-size: 16px;
-                margin-bottom: 3px;
-            }
-            .header {
-                font-size: 26px;
-                text-align: center;
-                 padding: 10px 20px 0 20px;
-                background-color:   #b4a7d6;
-            }
-            .title {
-                font-size: 32px;
-                font-weight: 500;
-                margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600 ;
+            src: url('static/main/fonts/OpenSans-SemiBold.ttf');
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700 ;
+            src: url('static/main/fonts/OpenSans-Bold.ttf');
+            font-style: normal;
+        }
+            @font-face {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 800 ;
+            src: url('static/main/fonts/OpenSans-ExtraBold.ttf');
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 200;
+            font-size: 16px;
+            margin-bottom: 3px;
+        }
+
+        .header {
+            font-size: 26px;
+            text-align: center;
+            padding: 10px 20px 0 20px;
+            background-color: #b4a7d6;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 500;
+            margin: 0;
 
 
-            }
-            .secondary-header {
-                background-color: #b4a7d6 ;
-                padding-top: 10px;
-                padding-bottom: 10px;
-                padding-left: 5px;
-                font-size: 22px;
+        }
 
-            }
-            .subtitle {
-                margin: 0;
-                padding: 0;
-                font-size: 14px;
-                text-align: center;
-                font-weight: 500;
-            }
-            .small-text {
-                padding-top: 4px;
-                margin: 1px 0 0 0;
-            }
+        .secondary-header {
+            background-color: #b4a7d6;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 5px;
+            font-size: 22px;
 
-            .flex-row {
-                display: flex;
-                flex-direction: row;
-                gap: 2px;
-                flex-wrap: nowrap;
-                width: 100%;
-                justify-content: end;
-                align-items: center;
+        }
 
-            }
+        .subtitle {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            text-align: center;
+            font-weight: 400;
+        }
 
-            .flex-row * {
-                display: flex;
+        .small-text {
+            padding-top: 4px;
+            margin: 1px 0 0 0;
+        }
 
-            }
-            .org-name {
-             color: #475569;
-                font-style: italic;
-                margin-bottom: 4px;
-            }
+        .flex-row {
+            display: flex;
+            flex-direction: row;
+            gap: 2px;
+            flex-wrap: nowrap;
+            width: 100%;
+            justify-content: end;
+            align-items: center;
 
-            .for-item {
-                margin-bottom: 10px;
-            }
-            .title-name {
-                margin-bottom: 0;
-                padding-bottom: 2px;
-                font-size: 18px;
-            }
+        }
 
-            .skills {
-              margin: 0;
-                padding: 0;
+        .flex-row * {
+            display: flex;
 
-            }
-            .skill {
-                font-size: 14px;
-                font-weight: 300;
-            }
-        </style>
-    </head>
-    <body>
-        <div class=''>
-            <div class='header'>
-                <p class='title'>Elam Buteil</p>
-                <p class="subtitle">{{ personal_info.phone_number }}</p>
-                <p class="subtitle">{{ personal_info.email }}</p>
-            </div>
-        <p class="small-text">Date of birth: {{ personal_info.birthdate }}</p>
-        <p class="small-text">Current residence: {{ personal_info.residence }}</p>
-           <p class="small-text">Updated: {{ date|date:"F d, Y" }}</p>
+        }
 
-        <div>
+        .org-name {
+            color: #475569;
+            font-style: italic;
+            margin-bottom: 4px;
+        }
+
+        .for-item {
+            margin-bottom: 10px;
+        }
+
+        .title-name {
+            margin-bottom: 0;
+            padding-bottom: 2px;
+            font-size: 18px;
+            font-style: normal;
+        }
+
+        .skills {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .skill {
+            font-size: 14px;
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+<div class=''>
+    <div class='header'>
+        <p class='title'>Elam Buteil</p>
+        <p class="subtitle">{{ personal_info.phone_number }}</p>
+        <p class="subtitle">{{ personal_info.email }}</p>
+    </div>
+    <p class="small-text">Date of birth: {{ personal_info.birthdate }}</p>
+    <p class="small-text">Current residence: {{ personal_info.residence }}</p>
+    <p class="small-text">Updated: {{ date|date:"F d, Y" }}</p>
+
+    <div>
         <div class='experience'>
-        <h1 class="secondary-header"> Experience</h1>
+            <h1 class="secondary-header"> Experience</h1>
             {% for job in work_experience %}
                 <div class="for-item">
-                <div class="flex-row">
-                    <h1 class="title-name">{{ job.title_name }}</h1>
-                    <p>·</p>
-                    <p class="flex-item org-name">{{ job.organization_name }}</p>
-                         <p>·</p>
-                        <p>{{ job.start_date|date:"M Y" }} -  {% if job.end_date %} {{ job.end_date|date:"M Y" }}  {% else %} Present {% endif %} </p>
-                </div>
-                {% if job.description %}
-                {{ job.description |safe }}
-                {% endif %}
+                    <div class="flex-row">
+                        <h1 class="title-name">{{ job.title_name }}</h1>
+                        <p>·</p>
+                        <p class="flex-item org-name">{{ job.organization_name }}</p>
+                        <p>·</p>
+                        <p>{{ job.start_date|date:"M Y" }} -  {% if job.end_date %}
+                            {{ job.end_date|date:"M Y" }}  {% else %} Present {% endif %} </p>
+                    </div>
+                    {% if job.description %}
+                        {{ job.description |safe }}
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>
     </div>
-        <div class='education'>
-             <h1 class="secondary-header">Education</h1>
-{% for education_entry in education %}
-     <div class="for-item">
-                <div class="flex-row">
-                    <h1 class="title-name">{{ education_entry.title_name }}</h1>
-                    <p>·</p>
-                    <p class="flex-item org-name">{{ education_entry.organization_name }}</p>
-                      <p>·</p>
-                  <p>{{ education_entry.start_date|date:"Y" }} -  {% if education_entry.end_date %} {{ education_entry.end_date|date:"Y" }}  {% else %} Present {% endif %} </p>
-                </div>
+    <div class='education'>
+        <h1 class="secondary-header">Education</h1>
+        {% for education_entry in education %}
+            <div class="for-item">
+            <div class="flex-row">
+                <h1 class="title-name">{{ education_entry.title_name }}</h1>
+                <p>·</p>
+                <p class="flex-item org-name">{{ education_entry.organization_name }}</p>
+                <p>·</p>
+                <p>{{ education_entry.start_date|date:"Y" }} -  {% if education_entry.end_date %}
+                    {{ education_entry.end_date|date:"Y" }}  {% else %} Present {% endif %} </p>
+            </div>
 
-                {% if education_entry.description %}
+            {% if education_entry.description %}
                 {{ education_entry.description |safe }}
-                {% endif %}
-            {% endfor %}
+            {% endif %}
+        {% endfor %}
         </div>
-            <div class='skills'>
-             <h1 class="secondary-header">Skills</h1>
+        <div class='skills'>
+            <h1 class="secondary-header">Skills</h1>
             <h5 class="skill">
                 {% for skill in skills %}
                     {{ skill.name }}{% if forloop.last %}.{% else %},{% endif %}
                 {% endfor %}
             </h5>
-            </div>
+        </div>
 
-    </body>
+</body>
 </html>
