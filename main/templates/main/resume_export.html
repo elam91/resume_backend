@@ -116,6 +116,21 @@
             display: flex;
 
         }
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            flex-wrap: nowrap;
+            width: 100%;
+            justify-content: end;
+            align-items: center;
+
+        }
+
+        .flex-child {
+            display: flex;
+
+        }
 
         .org-name {
             color: #475569;
@@ -143,6 +158,28 @@
         .skill {
             font-size: 14px;
             font-weight: 300;
+        }
+
+        .skill-description {
+            font-size: 12px;
+            font-weight: 200;
+            line-height: 6px;
+            margin: 0;
+            padding:0;
+        }
+            .skill-description p {
+            margin: 2px;
+            padding:2px;
+        }
+        .skill-description-title {
+            font-size: 14px;
+            line-height: 14px;
+            font-weight: 600;
+            margin: 0;
+            padding: 0;
+        }
+        br {
+            height: 1px;
         }
     </style>
 </head>
@@ -202,6 +239,19 @@
                     {{ skill.name }}{% if forloop.last %}.{% else %},{% endif %}
                 {% endfor %}
             </h5>
+
+    <pdf:nextpage />
+        <div class="flex-col">
+             {% for skill in skills %}
+                 {% if skill.description %}
+                     <div class="flex-child">
+                 <div class="skill-description">   <h6 class="skill-description-title">
+                 {{ skill.name }}
+                 </h6>{{ skill.description |safe }}</div>
+                     </div>
+                    {% endif %}
+                {% endfor %}
+        </div>
         </div>
 
 </body>
