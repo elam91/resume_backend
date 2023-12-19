@@ -239,8 +239,6 @@
                     {{ skill.name }}{% if forloop.last %}.{% else %},{% endif %}
                 {% endfor %}
             </h5>
-
-    <pdf:nextpage />
         <div class="flex-col">
              {% for skill in skills %}
                  {% if skill.description %}
