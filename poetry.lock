@@ -921,6 +921,24 @@ files = [
 ]
 
 [[package]]
+name = "model-bakery"
+version = "1.17.0"
+description = "Smart object creation facility for Django."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "model_bakery-1.17.0-py3-none-any.whl", hash = "sha256:1d26f1a7043c46e6729145b964a7740bf8f6dddac16510fd18323a1492fba757"},
+    {file = "model_bakery-1.17.0.tar.gz", hash = "sha256:fe808132cd966164600f0450cc05b3cfa50c6c062e00f739a861c5a4b9f236ca"},
+]
+
+[package.dependencies]
+django = ">=3.2"
+
+[package.extras]
+docs = ["sphinx", "sphinx-rtd-theme"]
+test = ["black", "coverage", "mypy", "pillow", "pytest", "pytest-django", "ruff"]
+
+[[package]]
 name = "odfpy"
 version = "1.4.1"
 description = "Python API and tools to manipulate OpenDocument files"
@@ -1829,4 +1847,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">3.10,<3.12"
-content-hash = "2181ac1ca6e81f992dc0b389d3bc4802c6e2a8f2af34a2d3e9443fbfa584100e"
+content-hash = "edfe0d31fbf118f5cfa4b6d49dc73e400e673c9fb5a451488971f06544a436cc"

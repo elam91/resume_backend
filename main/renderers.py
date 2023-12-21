@@ -2,7 +2,6 @@ from io import BytesIO
 from django.http import HttpResponse
 from django.template.loader import get_template
 from django.utils import timezone
-
 from xhtml2pdf import pisa
 
 
@@ -14,7 +13,6 @@ def render_to_pdf(template_src, context_dict={}):
 
     pisa_status = pisa.CreatePDF(
         html, dest=response
-
     )
     if pisa_status.err:
         return HttpResponse("Invalid PDF", status_code=400, content_type='text/plain')
