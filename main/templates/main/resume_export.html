@@ -62,11 +62,19 @@
             font-weight: 200;
             font-size: 16px;
             margin-bottom: 3px;
+            padding-bottom: 5px;
+
+        }
+
+        .no-link {
+            color: black;
+            text-decoration: none;
         }
 
         .header {
             font-size: 26px;
             text-align: center;
+            margin: 0;
             padding: 10px 20px 0 20px;
             background-color: #b4a7d6;
         }
@@ -77,6 +85,7 @@
             margin: 0;
 
 
+
         }
 
         .secondary-header {
@@ -85,6 +94,8 @@
             padding-bottom: 10px;
             padding-left: 5px;
             font-size: 22px;
+            margin-top: 1px;
+            margin-bottom: 3px;
 
         }
 
@@ -94,6 +105,7 @@
             font-size: 14px;
             text-align: center;
             font-weight: 400;
+
         }
 
         .small-text {
@@ -109,6 +121,7 @@
             width: 100%;
             justify-content: end;
             align-items: center;
+
 
         }
 
@@ -129,6 +142,8 @@
 
         .flex-child {
             display: flex;
+               text-decoration-thickness: 1px;
+
 
         }
 
@@ -181,16 +196,31 @@
         br {
             height: 1px;
         }
+        .pb {
+            padding-bottom: 10px;
+            height: 20px;
+        }
     </style>
 </head>
 <body>
 <div class=''>
-    <div class='header'>
-        <p class='title'>Elam Buteil</p>
-        <p class="subtitle">{{ personal_info.phone_number }}</p>
-        <p class="subtitle">{{ personal_info.email }}</p>
+    <div class='header flex-col'>
+        <a  href="https://resume.elambuteil.com" class='title no-link'>Elam Buteil</a>
+        <br/>
+        <div class="flex-row pb">
+            <p class="subtitle flex-child">{{ personal_info.phone_number }}</p>
+            <p class="flex-child subtitle">&bull;</p>
+        <p class="subtitle flex-child">{{ personal_info.email }}</p>
+              <p class="flex-child subtitle">&bull;</p>
+            <a target="_blank" href="https://www.linkedin.com/in/elam-buteil-81738317b/" class="flex-child subtitle">LinkedIn</a>
+              <p class="flex-child subtitle">&bull;</p>
+            <a target="_blank" href="https://github.com/elam91" class="flex-child subtitle">Github</a>
+              <p class="flex-child subtitle">&bull;</p>
+            <a target="_blank" href="https://resume.elambuteil.com" class="flex-child subtitle">Website</a>
+        </div>
+
     </div>
-    <p class="small-text">Date of birth: {{ personal_info.birthdate }}</p>
+    <p class="small-text">Birth year: {{ personal_info.birthdate|date:"Y" }}</p>
     <p class="small-text">Current residence: {{ personal_info.residence }}</p>
     <p class="small-text">Updated: {{ date|date:"F d, Y" }}</p>
 
