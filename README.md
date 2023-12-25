@@ -1,5 +1,13 @@
 # What is this
 
+This is the backend for my resume, its written in Django with DjangoRestFramework, 
+It handles PDF export with a django template and xhtml2pdf. 
+
+it has tests, models, serializers, views, and everything necessary to serve data from a backend.
+The idea is the resume info is easily changed from the admin panel,
+and then a PDF resume can be exported from the website, so both the website and the PDF are always updated,
+and syncing them manually is not needed.
+
 ## Technology
 
 Django + drf + django-filter
@@ -18,7 +26,7 @@ We are using poetry to manage the projects dependencies.
 2. Get the code:    
 Clone this project    
    ```
-   git clone still_missing
+   git clone git@github.com:elam91/resume_backend.git
    ```
    
 
@@ -85,10 +93,7 @@ poetry run python manage.py test
 ```
 ## Production
 
-Ready to run as container (see dockerfile). Environment is determined by DJANGO_CONFIGURATION env variable
-which maps to class in settings.py. Note that in non local dev environments DEBUG=False so django won't magically serve statics
-You can use Nginx for that (before the django service, see, the [nginx.conf](./ecs/nginx.conf) for a reference)
-or install [whitenoise](https://whitenoise.evans.io/) and add it as a middleware. This is a common pattern for PAAS deployments
+Ready to run as container (see dockerfile). pushing to prod deploys to fly.io.
 
 ## Setup for use in local environment as a "black box"
 e.g when you work on the frontend
@@ -103,18 +108,4 @@ just restart the compose a few times until it work
 
 
 ### CI
-Depends on where you run, we support an initial github actions CI out of the box -declared [here](./.github/workflows/ci.yml) and 
-a full amazon environment with codebuild buildspec [file](./ecs/buildspec.yml) 
-
-## Not included libraries you might consider adding
-* [Django nested inlines](https://github.com/s-block/django-nested-inline) for "nesting inlines" in the admin
-* [Celery](https://docs.celeryq.dev/en/stable/) for async, scheduled or "out of request/response cycle" behavior
-* [django admin reorder](https://pypi.org/project/django-modeladmin-reorder/) to customize the admin further
-
-### Linting
-
-With [ruff](https://github.com/astral-sh/ruff), not automated yet as part of CI
-
-```bash
-ruff check . --fix
-```
+Using github actions, tests and deploy to fly.
