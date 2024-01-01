@@ -31,7 +31,7 @@ xhtml2pdf = "^0.2.13"
 model-bakery = "^1.17.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^7.4.2"
+pytest = "^7.4.4"
 ruff = "^0.0.292"
 
 [build-system]
