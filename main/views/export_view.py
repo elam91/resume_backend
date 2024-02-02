@@ -1,15 +1,25 @@
-from http.client import HTTPResponse
+from datetime import datetime
 
-from django.template.response import TemplateResponse
+import discord
+from django.conf import settings
 from django.utils import timezone
-from django.views import View
 
 from main import renderers
 from main.choices import ExperienceTypes
 from main.models import PersonalInfo, Experience, Project, Skill
-from main.serializers import PersonalInfoSerializer, ExperienceSerializer, SkillSerializer
-from main.serializers.experience_serializer import PDFExperienceSerializer
 
+
+
+def send_to_discord():
+    embed = discord.Embed(title="🚨Resume downloaded!🚨",
+                          description=datetime.now().date().strftime('%d/%m/%Y'))
+    embed.add_field(name=f"**Someone downloaded your resume!** 🧑🏼‍💻", value=f"hurray! 🥳")
+
+    webhook_url = settings.DISCORD_WEBHOOK
+    if webhook_url:
+        webhook = discord.SyncWebhook.from_url(webhook_url)
+        webhook.send(embed=embed)
+    return
 
 def pdf_view(request, *args, **kwargs):
     personal_info = PersonalInfo.objects.order_by('-created_at').first()
@@ -18,6 +28,9 @@ def pdf_view(request, *args, **kwargs):
     work = experiences.filter(experience_type=ExperienceTypes.WORK)
     projects = Project.objects.all()
     skills = Skill.objects.all()
+    configuration_name = settings.CONFIGURATION.split(".")[-1]
+    if configuration_name == 'Production':
+        send_to_discord()
 
 
     data = {

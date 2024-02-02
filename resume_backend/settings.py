@@ -24,7 +24,7 @@ class Base(Configuration):
 
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = values.Value('jtvtypRqylNEdZccQVnLVxKmFbccrqydjwFSfjwHoGMHZNknVg')
-
+    DISCORD_WEBHOOK = values.Value('')
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
 
@@ -69,14 +69,14 @@ class Base(Configuration):
     ]
     QUERYCOUNT = {
         'THRESHOLDS': {
-            'MEDIUM': 50,
+            'MEDIUM': 10,
             'HIGH': 200,
             'MIN_TIME_TO_LOG': 0,
-            'MIN_QUERY_COUNT_TO_LOG': 5
+            'MIN_QUERY_COUNT_TO_LOG': 1
         },
         'IGNORE_REQUEST_PATTERNS': [],
         'IGNORE_SQL_PATTERNS': [],
-        'DISPLAY_DUPLICATES': None,
+        'DISPLAY_DUPLICATES': 1,
         'RESPONSE_HEADER': None
     }
 
