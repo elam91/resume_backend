@@ -1,12 +1,12 @@
-FROM python:3.11-slim-bookworm
+FROM --platform=linux/amd64 python:3.11-slim-bookworm
 
 RUN set -ex \
     # install system build deps
 &&  apt update &&  apt install -y gcc \
     # install system runtime deps
-&&  apt install -y libpq-dev \
+&&  apt install -y libpq-dev sox ffmpeg libcairo2 libcairo2-dev \
     # install python app requirements
-&&  pip install poetry
+&& pip install --upgrade pip && pip install poetry
 
 WORKDIR /srv/app
 
