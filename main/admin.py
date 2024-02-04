@@ -31,6 +31,9 @@ class PersonalInfoAdmin(ImportExportModelAdmin):
 @admin.register(Project)
 class ProjectAdmin(ImportExportModelAdmin):
     list_display = ['name', 'description', 'order', 'website_link', 'github_link']
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 30})},
+    }
 
 
 
