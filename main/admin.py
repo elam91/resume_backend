@@ -35,7 +35,7 @@ class ProjectAdmin(ImportExportModelAdmin):
         models.TextField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 30})},
     }
 
-
+#
 
 @admin.register(Skill)
 class SkillAdmin(ImportExportModelAdmin):
