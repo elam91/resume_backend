@@ -269,17 +269,6 @@
                     {{ skill.name }}{% if forloop.last %}.{% else %},{% endif %}
                 {% endfor %}
             </h5>
-        <div class="flex-col">
-             {% for skill in skills %}
-                 {% if skill.description %}
-                     <div class="flex-child">
-                 <div class="skill-description">   <h6 class="skill-description-title">
-                 {{ skill.name }}
-                 </h6>{{ skill.description |safe }}</div>
-                     </div>
-                    {% endif %}
-                {% endfor %}
-        </div>
         </div>
 
 </body>
