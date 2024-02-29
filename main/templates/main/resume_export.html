@@ -252,9 +252,7 @@
                 <h1 class="title-name">{{ education_entry.title_name }}</h1>
                 <p>·</p>
                 <p class="flex-item org-name">{{ education_entry.organization_name }}</p>
-                <p>·</p>
-                <p>{{ education_entry.start_date|date:"Y" }} -  {% if education_entry.end_date %}
-                    {{ education_entry.end_date|date:"Y" }}  {% else %} Present {% endif %} </p>
+                
             </div>
 
             {% if education_entry.description %}
