@@ -5,9 +5,8 @@ from django.conf import settings
 from django.utils import timezone
 
 from main import renderers
-from main.choices import ExperienceTypes
-from main.models import PersonalInfo, Experience, Project, Skill
-
+from main.choices import ExperienceTypes, DescriptionPages
+from main.models import PersonalInfo, Experience, Project, Skill, LongDescription
 
 
 def send_to_discord():
@@ -26,7 +25,11 @@ def pdf_view(request, *args, **kwargs):
     experiences = Experience.objects.all()
     education = experiences.filter(experience_type=ExperienceTypes.EDUCATION).all()
     work = experiences.filter(experience_type=ExperienceTypes.WORK)
-    projects = Project.objects.all()
+    description = None
+    try:
+        description = LongDescription.objects.get(page=DescriptionPages.EXPERIENCE.value)
+    except:
+        pass
     skills = Skill.objects.all()
     configuration_name = settings.CONFIGURATION.split(".")[-1]
     if configuration_name == 'Production':
@@ -38,7 +41,8 @@ def pdf_view(request, *args, **kwargs):
         'personal_info': personal_info,
         'work_experience': work,
         'education': education,
-        'skills': skills
+        'skills': skills,
+        'description': description
 
     }
 

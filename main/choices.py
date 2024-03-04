@@ -8,3 +8,4 @@ class ExperienceTypes(TextChoices):
 
 class DescriptionPages(TextChoices):
     INTRO = 'INTRO', ('Introduction')
+    EXPERIENCE = 'EXP', ('Experience')
