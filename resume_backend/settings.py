@@ -36,6 +36,7 @@ class Base(Configuration):
         'corsheaders',
         'rest_framework_simplejwt',
         'rest_framework',
+        'django_filters',
         'django_extensions',
         'import_export',
         'drf_spectacular',
