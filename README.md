@@ -50,8 +50,7 @@ enter projects directory and install dependencies using Poetry. Poetry will look
 We are currently using postgres. You need to set up a user,
    * After you have installed postgres, enter postgres cli client:    
    ```
-   sudo su - postgres
-   psql
+   psql postgres
    ```
    * create a database, a user and a role
     ```
