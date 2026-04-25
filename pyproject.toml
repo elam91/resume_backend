@@ -33,6 +33,7 @@ django-tinymce = "^3.6.1"
 xhtml2pdf = "^0.2.13"
 model-bakery = "^1.17.0"
 discord-py = "^2.3.2"
+urllib3 = "^2.6"
 
 
 [build-system]
